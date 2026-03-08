@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Meridian Wealth Advisors</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --navy: #0d1b2a;
+    --slate: #1b2d3e;
+    --steel: #2e4a63;
+    --gold: #b89a5a;
+    --gold-light: #d4b87a;
+    --pearl: #f4f1eb;
+    --off-white: #faf9f7;
+    --muted: rgba(13,27,42,0.55);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--off-white);
+    color: var(--navy);
+    font-family: 'Jost', sans-serif;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.4rem 4rem;
+    background: rgba(250,249,247,0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(184,154,90,0.15);
+  }
+
+  .nav-brand {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .nav-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.25rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    color: var(--navy);
+  }
+
+  .nav-tagline {
+    font-size: 0.62rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-top: 1px;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 3rem;
+    list-style: none;
+    align-items: center;
+  }
+
+  .nav-links a {
+    text-decoration: none;
+    color: var(--navy);
+    font-size: 0.78rem;
+    font-weight: 400;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--gold); }
+
+  .nav-cta {
+    padding: 0.7rem 1.8rem;
+    border: 1px solid var(--gold);
+    color: var(--gold) !important;
+    transition: background 0.2s, color 0.2s !important;
+  }
+
+  .nav-cta:hover {
+    background: var(--gold) !important;
+    color: white !important;
+  }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    background: var(--navy);
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    padding-top: 80px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background:
+      radial-gradient(ellipse at 80% 50%, rgba(184,154,90,0.08) 0%, transparent 60%),
+      repeating-linear-gradient(
+        -30deg,
+        transparent,
+        transparent 80px,
+        rgba(184,154,90,0.02) 80px,
+        rgba(184,154,90,0.02) 81px
+      );
+  }
+
+  .hero-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 5rem 4rem 5rem 5rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    opacity: 0;
+    animation: fadeUp 0.9s ease forwards 0.2s;
+  }
+
+  .eyebrow-line {
+    width: 32px;
+    height: 1px;
+    background: var(--gold);
+  }
+
+  .eyebrow-text {
+    font-size: 0.7rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+
+  .hero-headline {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3rem, 5vw, 5.5rem);
+    font-weight: 300;
+    line-height: 1.1;
+    color: var(--pearl);
+    margin-bottom: 2rem;
+    opacity: 0;
+    animation: fadeUp 0.9s ease forwards 0.4s;
+  }
+
+  .hero-headline em {
+    font-style: italic;
+    color: var(--gold-light);
+  }
+
+  .hero-body {
+    font-size: 1rem;
+    line-height: 1.85;
+    color: rgba(244,241,235,0.65);
+    max-width: 440px;
+    margin-bottom: 3rem;
+    font-weight: 300;
+    opacity: 0;
+    animation: fadeUp 0.9s ease forwards 0.6s;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 1.2rem;
+    align-items: center;
+    opacity: 0;
+    animation: fadeUp 0.9s ease forwards 0.8s;
+  }
+
+  .btn-primary {
+    padding: 1rem 2.4rem;
+    background: var(--gold);
+    color: var(--navy);
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.2s;
+  }
+
+  .btn-primary:hover {
+    background: var(--gold-light);
+    transform: translateY(-2px);
+  }
+
+  .btn-ghost {
+    font-size: 0.78rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(244,241,235,0.6);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: color 0.2s;
+  }
+
+  .btn-ghost:hover { color: var(--pearl); }
+
+  .hero-right {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-card {
+    background: rgba(244,241,235,0.04);
+    border: 1px solid rgba(184,154,90,0.2);
+    padding: 3rem;
+    max-width: 360px;
+    width: 100%;
+    opacity: 0;
+    animation: fadeUp 0.9s ease forwards 0.6s;
+  }
+
+  .card-label {
+    font-size: 0.68rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 2rem;
+  }
+
+  .card-services {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .card-services li {
+    padding: 1rem 0;
+    border-bottom: 1px solid rgba(184,154,90,0.12);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem;
+    color: var(--pearl);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .card-services li span {
+    font-size: 0.7rem;
+    color: var(--gold);
+    letter-spacing: 0.1em;
+  }
+
+  /* TRUST BAR */
+  .trust-bar {
+    background: var(--gold);
+    padding: 1.1rem 4rem;
+    display: flex;
+    justify-content: center;
+    gap: 5rem;
+    align-items: center;
+  }
+
+  .trust-item {
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--navy);
+  }
+
+  .trust-sep {
+    width: 1px;
+    height: 16px;
+    background: rgba(13,27,42,0.25);
+  }
+
+  /* ABOUT SECTION */
+  .about {
+    padding: 8rem 5rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .section-eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    margin-bottom: 1.2rem;
+  }
+
+  .eyebrow-line-dark {
+    width: 24px;
+    height: 1px;
+    background: var(--gold);
+  }
+
+  .eyebrow-label {
+    font-size: 0.68rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 3.5vw, 3.2rem);
+    font-weight: 300;
+    line-height: 1.15;
+    color: var(--navy);
+    margin-bottom: 2rem;
+  }
+
+  .section-title em {
+    font-style: italic;
+    color: var(--steel);
+  }
+
+  .about-text p {
+    font-size: 0.95rem;
+    line-height: 1.9;
+    color: var(--muted);
+    margin-bottom: 1.2rem;
+    font-weight: 300;
+  }
+
+  .about-text p strong {
+    color: var(--navy);
+    font-weight: 500;
+  }
+
+  .about-visual {
+    background: var(--navy);
+    padding: 3.5rem;
+    position: relative;
+  }
+
+  .about-visual::before {
+    content: '';
+    position: absolute;
+    top: -12px; left: -12px;
+    right: 12px; bottom: 12px;
+    border: 1px solid var(--gold);
+    opacity: 0.3;
+    pointer-events: none;
+  }
+
+  .about-quote {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.5rem;
+    font-weight: 300;
+    line-height: 1.6;
+    color: var(--pearl);
+    margin-bottom: 2rem;
+  }
+
+  .about-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(184,154,90,0.2);
+  }
+
+  .stat-number {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.5rem;
+    font-weight: 300;
+    color: var(--gold);
+    line-height: 1;
+  }
+
+  .stat-label {
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(244,241,235,0.45);
+    margin-top: 0.3rem;
+  }
+
+  /* SERVICES */
+  .services {
+    background: var(--pearl);
+    padding: 7rem 5rem;
+  }
+
+  .services-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .services-header {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    margin-bottom: 4rem;
+    align-items: end;
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: rgba(13,27,42,0.08);
+  }
+
+  .service-card {
+    background: var(--pearl);
+    padding: 2.5rem;
+    transition: background 0.2s;
+  }
+
+  .service-card:hover { background: white; }
+
+  .service-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.5rem;
+    font-weight: 300;
+    color: rgba(184,154,90,0.25);
+    line-height: 1;
+    margin-bottom: 1.2rem;
+  }
+
+  .service-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 0.8rem;
+  }
+
+  .service-desc {
+    font-size: 0.85rem;
+    line-height: 1.75;
+    color: var(--muted);
+    font-weight: 300;
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--navy);
+    padding: 3.5rem 5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer-brand {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem;
+    font-weight: 300;
+    color: var(--pearl);
+    letter-spacing: 0.06em;
+  }
+
+  .footer-sub {
+    font-size: 0.68rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-top: 0.4rem;
+  }
+
+  .footer-right {
+    text-align: right;
+    font-size: 0.78rem;
+    color: rgba(244,241,235,0.4);
+    line-height: 1.9;
+    font-weight: 300;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-brand">
+    <div class="nav-name">Meridian Wealth Advisors</div>
+    <div class="nav-tagline">Life Advisors. Financial Partners.</div>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#">Services</a></li>
+    <li><a href="#">Our Approach</a></li>
+    <li><a href="#">Team</a></li>
+    <li><a href="#" class="nav-cta">Get Started</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-eyebrow">
+      <div class="eyebrow-line"></div>
+      <span class="eyebrow-text">Seattle-Based Financial Planning</span>
+    </div>
+    <h1 class="hero-headline">
+      We're your advisors.<br>
+      <em>Your life advisors.</em>
+    </h1>
+    <p class="hero-body">Money is tied to everything — your retirement, your kids' futures, the business you're building, the life you're planning. We listen first, then build a plan around what actually matters to you.</p>
+    <div class="hero-actions">
+      <a href="#" class="btn-primary">Schedule a Conversation</a>
+      <a href="#" class="btn-ghost">Our Approach →</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-card">
+      <div class="card-label">What We Handle</div>
+      <ul class="card-services">
+        <li>Retirement Planning <span>→</span></li>
+        <li>Estate & Trust Services <span>→</span></li>
+        <li>College Savings <span>→</span></li>
+        <li>Investment Management <span>→</span></li>
+        <li>Tax Strategy <span>→</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<div class="trust-bar">
+  <span class="trust-item">Seattle-Based</span>
+  <span class="trust-sep"></span>
+  <span class="trust-item">Fee-Only</span>
+  <span class="trust-sep"></span>
+  <span class="trust-item">Fiduciary</span>
+  <span class="trust-sep"></span>
+  <span class="trust-item">No Jargon. No Pressure.</span>
+</div>
+
+<section class="about">
+  <div class="about-text">
+    <div class="section-eyebrow">
+      <div class="eyebrow-line-dark"></div>
+      <span class="eyebrow-label">About Us</span>
+    </div>
+    <h2 class="section-title">Built on<br><em>straight talk.</em></h2>
+    <p>We're Meridian Wealth Advisors. But our clients usually just call us their <strong>life advisors.</strong></p>
+    <p>Our team is Seattle-based, locally minded, and genuinely invested in this community. We've helped clients save for college, navigate retirement, establish trusts, and make confident decisions at every stage of life.</p>
+    <p>No jargon. No pressure. Just straightforward guidance from advisors who treat your future like it's their own, because in a lot of ways, it is.</p>
+  </div>
+  <div class="about-visual">
+    <p class="about-quote">"We don't just manage portfolios. We listen first, then build a plan around what actually matters to you."</p>
+    <div class="about-stats">
+      <div>
+        <div class="stat-number">20+</div>
+        <div class="stat-label">Years in Seattle</div>
+      </div>
+      <div>
+        <div class="stat-number">$0</div>
+        <div class="stat-label">Hidden fees. Ever.</div>
+      </div>
+      <div>
+        <div class="stat-number">300+</div>
+        <div class="stat-label">Families served</div>
+      </div>
+      <div>
+        <div class="stat-number">100%</div>
+        <div class="stat-label">Fiduciary standard</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="services">
+  <div class="services-inner">
+    <div class="services-header">
+      <div>
+        <div class="section-eyebrow">
+          <div class="eyebrow-line-dark"></div>
+          <span class="eyebrow-label">What We Do</span>
+        </div>
+        <h2 class="section-title">Planning for<br><em>every stage.</em></h2>
+      </div>
+      <p style="font-size:0.92rem;line-height:1.85;color:var(--muted);font-weight:300;padding-bottom:0.5rem;">Whether you're just starting to think seriously about retirement or navigating a major life transition, we build plans that grow with you.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-num">01</div>
+        <div class="service-name">Retirement Planning</div>
+        <div class="service-desc">A realistic roadmap to the retirement you actually want, built around your timeline and your goals.</div>
+      </div>
+      <div class="service-card">
+        <div class="service-num">02</div>
+        <div class="service-name">College Savings</div>
+        <div class="service-desc">529 plans, investment accounts, and funding strategies that make the numbers work for your family.</div>
+      </div>
+      <div class="service-card">
+        <div class="service-num">03</div>
+        <div class="service-name">Estate & Trust</div>
+        <div class="service-desc">Clear, straightforward guidance on protecting your assets and passing them to who matters most.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div>
+    <div class="footer-brand">Meridian Wealth Advisors</div>
+    <div class="footer-sub">Life Advisors. Financial Partners.</div>
+  </div>
+  <div class="footer-right">
+    <div>800 Fifth Ave, Suite 2100, Seattle WA 98104</div>
+    <div>info@meridianwealth.com</div>
+    <div>206.555.0192</div>
+  </div>
+</footer>
+
+</body>
+</html>
