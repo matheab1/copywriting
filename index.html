@@ -3,28 +3,26 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Meridian Wealth Advisors</title>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<title>Steady Ground Coffee</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Lora:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
   :root {
-    --navy: #0d1b2a;
-    --slate: #1b2d3e;
-    --steel: #2e4a63;
-    --gold: #b89a5a;
-    --gold-light: #d4b87a;
-    --pearl: #f4f1eb;
-    --off-white: #faf9f7;
-    --muted: rgba(13,27,42,0.55);
+    --espresso: #1a0f0a;
+    --roast: #3d1f0f;
+    --caramel: #c17f3a;
+    --cream: #f5ede0;
+    --fog: #e8ddd0;
+    --chalk: #faf6f1;
   }
 
   html { scroll-behavior: smooth; }
 
   body {
-    background: var(--off-white);
-    color: var(--navy);
-    font-family: 'Jost', sans-serif;
+    background: var(--chalk);
+    color: var(--espresso);
+    font-family: 'DM Sans', sans-serif;
     overflow-x: hidden;
   }
 
@@ -36,343 +34,315 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1.4rem 4rem;
-    background: rgba(250,249,247,0.95);
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid rgba(184,154,90,0.15);
+    padding: 1.2rem 3rem;
+    background: rgba(250, 246, 241, 0.92);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(193, 127, 58, 0.2);
   }
 
-  .nav-brand {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .nav-name {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.25rem;
-    font-weight: 600;
-    letter-spacing: 0.08em;
-    color: var(--navy);
-  }
-
-  .nav-tagline {
-    font-size: 0.62rem;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--gold);
-    margin-top: 1px;
+  .nav-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.5rem;
+    letter-spacing: 0.12em;
+    color: var(--roast);
   }
 
   .nav-links {
     display: flex;
-    gap: 3rem;
+    gap: 2.5rem;
     list-style: none;
-    align-items: center;
   }
 
   .nav-links a {
     text-decoration: none;
-    color: var(--navy);
-    font-size: 0.78rem;
-    font-weight: 400;
-    letter-spacing: 0.1em;
+    color: var(--espresso);
+    font-size: 0.82rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
     transition: color 0.2s;
   }
 
-  .nav-links a:hover { color: var(--gold); }
-
-  .nav-cta {
-    padding: 0.7rem 1.8rem;
-    border: 1px solid var(--gold);
-    color: var(--gold) !important;
-    transition: background 0.2s, color 0.2s !important;
-  }
-
-  .nav-cta:hover {
-    background: var(--gold) !important;
-    color: white !important;
-  }
+  .nav-links a:hover { color: var(--caramel); }
 
   /* HERO */
   .hero {
     min-height: 100vh;
-    background: var(--navy);
     display: grid;
-    grid-template-columns: 1.1fr 0.9fr;
-    padding-top: 80px;
+    grid-template-columns: 1fr 1fr;
+    padding-top: 70px;
+  }
+
+  .hero-left {
+    background: var(--espresso);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 5rem 4rem;
     position: relative;
     overflow: hidden;
   }
 
-  .hero::before {
+  .hero-left::before {
     content: '';
     position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background:
-      radial-gradient(ellipse at 80% 50%, rgba(184,154,90,0.08) 0%, transparent 60%),
-      repeating-linear-gradient(
-        -30deg,
-        transparent,
-        transparent 80px,
-        rgba(184,154,90,0.02) 80px,
-        rgba(184,154,90,0.02) 81px
-      );
-  }
-
-  .hero-left {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 5rem 4rem 5rem 5rem;
-    position: relative;
-    z-index: 1;
+    top: -100px; right: -100px;
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(193,127,58,0.15) 0%, transparent 70%);
+    border-radius: 50%;
   }
 
   .hero-eyebrow {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    margin-bottom: 2rem;
-    opacity: 0;
-    animation: fadeUp 0.9s ease forwards 0.2s;
-  }
-
-  .eyebrow-line {
-    width: 32px;
-    height: 1px;
-    background: var(--gold);
-  }
-
-  .eyebrow-text {
-    font-size: 0.7rem;
-    letter-spacing: 0.22em;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
     text-transform: uppercase;
-    color: var(--gold);
+    color: var(--caramel);
+    margin-bottom: 1.5rem;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 0.2s;
   }
 
   .hero-headline {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(3rem, 5vw, 5.5rem);
-    font-weight: 300;
-    line-height: 1.1;
-    color: var(--pearl);
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(3.5rem, 6vw, 6rem);
+    line-height: 0.95;
+    color: var(--cream);
+    letter-spacing: 0.02em;
     margin-bottom: 2rem;
     opacity: 0;
-    animation: fadeUp 0.9s ease forwards 0.4s;
+    animation: fadeUp 0.8s ease forwards 0.4s;
   }
 
-  .hero-headline em {
-    font-style: italic;
-    color: var(--gold-light);
+  .hero-headline span {
+    color: var(--caramel);
+    display: block;
   }
 
-  .hero-body {
-    font-size: 1rem;
-    line-height: 1.85;
-    color: rgba(244,241,235,0.65);
-    max-width: 440px;
-    margin-bottom: 3rem;
-    font-weight: 300;
+  .hero-sub {
+    font-family: 'Lora', serif;
+    font-size: 1.05rem;
+    line-height: 1.75;
+    color: rgba(245, 237, 224, 0.75);
+    max-width: 400px;
+    margin-bottom: 2.5rem;
     opacity: 0;
-    animation: fadeUp 0.9s ease forwards 0.6s;
+    animation: fadeUp 0.8s ease forwards 0.6s;
   }
 
-  .hero-actions {
-    display: flex;
-    gap: 1.2rem;
-    align-items: center;
-    opacity: 0;
-    animation: fadeUp 0.9s ease forwards 0.8s;
-  }
-
-  .btn-primary {
-    padding: 1rem 2.4rem;
-    background: var(--gold);
-    color: var(--navy);
-    font-size: 0.78rem;
+  .hero-cta {
+    display: inline-block;
+    padding: 0.9rem 2.2rem;
+    background: var(--caramel);
+    color: var(--espresso);
+    font-size: 0.8rem;
     font-weight: 500;
     letter-spacing: 0.12em;
     text-transform: uppercase;
     text-decoration: none;
     transition: background 0.2s, transform 0.2s;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 0.8s;
+    width: fit-content;
   }
 
-  .btn-primary:hover {
-    background: var(--gold-light);
+  .hero-cta:hover {
+    background: var(--cream);
     transform: translateY(-2px);
   }
 
-  .btn-ghost {
-    font-size: 0.78rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: rgba(244,241,235,0.6);
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    transition: color 0.2s;
-  }
-
-  .btn-ghost:hover { color: var(--pearl); }
-
   .hero-right {
+    background: var(--fog);
+    position: relative;
+    overflow: hidden;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 4rem;
-    position: relative;
-    z-index: 1;
   }
 
-  .hero-card {
-    background: rgba(244,241,235,0.04);
-    border: 1px solid rgba(184,154,90,0.2);
-    padding: 3rem;
-    max-width: 360px;
+  .hero-right-inner {
     width: 100%;
-    opacity: 0;
-    animation: fadeUp 0.9s ease forwards 0.6s;
-  }
-
-  .card-label {
-    font-size: 0.68rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--gold);
-    margin-bottom: 2rem;
-  }
-
-  .card-services {
-    list-style: none;
+    height: 100%;
+    background:
+      linear-gradient(135deg, rgba(193,127,58,0.08) 0%, transparent 60%),
+      repeating-linear-gradient(
+        45deg,
+        transparent,
+        transparent 40px,
+        rgba(193,127,58,0.04) 40px,
+        rgba(193,127,58,0.04) 41px
+      );
     display: flex;
     flex-direction: column;
-    gap: 0;
-  }
-
-  .card-services li {
-    padding: 1rem 0;
-    border-bottom: 1px solid rgba(184,154,90,0.12);
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.15rem;
-    color: var(--pearl);
-    display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    padding: 4rem;
   }
 
-  .card-services li span {
+  .coffee-icon {
+    font-size: 5rem;
+    opacity: 0;
+    animation: fadeUp 1s ease forwards 0.5s;
+  }
+
+  .hero-tagline {
+    font-family: 'Lora', serif;
+    font-style: italic;
+    font-size: 1.3rem;
+    color: var(--roast);
+    text-align: center;
+    line-height: 1.6;
+    opacity: 0;
+    animation: fadeUp 1s ease forwards 0.7s;
+  }
+
+  .hours-badge {
+    background: var(--espresso);
+    color: var(--cream);
+    padding: 1.2rem 2rem;
+    text-align: center;
+    opacity: 0;
+    animation: fadeUp 1s ease forwards 0.9s;
+  }
+
+  .hours-badge .label {
     font-size: 0.7rem;
-    color: var(--gold);
-    letter-spacing: 0.1em;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--caramel);
+    margin-bottom: 0.4rem;
   }
 
-  /* TRUST BAR */
-  .trust-bar {
-    background: var(--gold);
-    padding: 1.1rem 4rem;
+  .hours-badge .time {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.4rem;
+    letter-spacing: 0.08em;
+  }
+
+  /* ABOUT STRIP */
+  .about-strip {
+    background: var(--caramel);
+    padding: 1rem 3rem;
     display: flex;
     justify-content: center;
-    gap: 5rem;
+    gap: 4rem;
     align-items: center;
+    overflow: hidden;
   }
 
-  .trust-item {
-    font-size: 0.72rem;
+  .strip-item {
+    font-size: 0.75rem;
     font-weight: 500;
     letter-spacing: 0.15em;
     text-transform: uppercase;
-    color: var(--navy);
+    color: var(--espresso);
+    white-space: nowrap;
   }
 
-  .trust-sep {
-    width: 1px;
-    height: 16px;
-    background: rgba(13,27,42,0.25);
+  .strip-dot {
+    width: 4px; height: 4px;
+    background: var(--espresso);
+    border-radius: 50%;
+    opacity: 0.4;
+  }
+
+  /* MENU SECTION */
+  .menu {
+    padding: 6rem 3rem;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .section-label {
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--caramel);
+    margin-bottom: 0.8rem;
+  }
+
+  .section-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(2.5rem, 4vw, 3.8rem);
+    color: var(--espresso);
+    letter-spacing: 0.02em;
+    margin-bottom: 3rem;
+    line-height: 1;
+  }
+
+  .menu-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5px;
+    background: rgba(61,31,15,0.1);
+  }
+
+  .menu-card {
+    background: var(--chalk);
+    padding: 2rem;
+    transition: background 0.2s;
+  }
+
+  .menu-card:hover { background: var(--fog); }
+
+  .menu-card-label {
+    font-size: 0.68rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--caramel);
+    margin-bottom: 0.5rem;
+  }
+
+  .menu-card-name {
+    font-family: 'Lora', serif;
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--espresso);
+    margin-bottom: 0.6rem;
+  }
+
+  .menu-card-desc {
+    font-size: 0.85rem;
+    line-height: 1.65;
+    color: rgba(26,15,10,0.65);
+  }
+
+  .menu-card-price {
+    margin-top: 1rem;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.1rem;
+    color: var(--roast);
+    letter-spacing: 0.08em;
   }
 
   /* ABOUT SECTION */
   .about {
-    padding: 8rem 5rem;
+    background: var(--espresso);
+    padding: 6rem 3rem;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 6rem;
+    gap: 5rem;
     align-items: center;
-    max-width: 1200px;
-    margin: 0 auto;
+    max-width: 100%;
   }
 
-  .section-eyebrow {
-    display: flex;
-    align-items: center;
-    gap: 0.8rem;
-    margin-bottom: 1.2rem;
+  .about-text { max-width: 480px; margin-left: auto; }
+
+  .about .section-label { color: var(--caramel); }
+
+  .about .section-title {
+    color: var(--cream);
+    margin-bottom: 1.5rem;
   }
 
-  .eyebrow-line-dark {
-    width: 24px;
-    height: 1px;
-    background: var(--gold);
-  }
-
-  .eyebrow-label {
-    font-size: 0.68rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--gold);
-  }
-
-  .section-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(2rem, 3.5vw, 3.2rem);
-    font-weight: 300;
-    line-height: 1.15;
-    color: var(--navy);
-    margin-bottom: 2rem;
-  }
-
-  .section-title em {
-    font-style: italic;
-    color: var(--steel);
-  }
-
-  .about-text p {
-    font-size: 0.95rem;
-    line-height: 1.9;
-    color: var(--muted);
-    margin-bottom: 1.2rem;
-    font-weight: 300;
-  }
-
-  .about-text p strong {
-    color: var(--navy);
-    font-weight: 500;
-  }
-
-  .about-visual {
-    background: var(--navy);
-    padding: 3.5rem;
-    position: relative;
-  }
-
-  .about-visual::before {
-    content: '';
-    position: absolute;
-    top: -12px; left: -12px;
-    right: 12px; bottom: 12px;
-    border: 1px solid var(--gold);
-    opacity: 0.3;
-    pointer-events: none;
-  }
-
-  .about-quote {
-    font-family: 'Cormorant Garamond', serif;
-    font-style: italic;
-    font-size: 1.5rem;
-    font-weight: 300;
-    line-height: 1.6;
-    color: var(--pearl);
+  .about-body {
+    font-family: 'Lora', serif;
+    font-size: 1rem;
+    line-height: 1.85;
+    color: rgba(245,237,224,0.72);
     margin-bottom: 2rem;
   }
 
@@ -380,120 +350,93 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 1.5rem;
-    margin-top: 2rem;
-    padding-top: 2rem;
-    border-top: 1px solid rgba(184,154,90,0.2);
+  }
+
+  .stat {
+    border-top: 1px solid rgba(193,127,58,0.3);
+    padding-top: 1rem;
   }
 
   .stat-number {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 2.5rem;
-    font-weight: 300;
-    color: var(--gold);
-    line-height: 1;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2.2rem;
+    color: var(--caramel);
+    letter-spacing: 0.04em;
   }
 
   .stat-label {
-    font-size: 0.72rem;
+    font-size: 0.75rem;
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    color: rgba(244,241,235,0.45);
-    margin-top: 0.3rem;
+    color: rgba(245,237,224,0.5);
+    margin-top: 0.2rem;
   }
 
-  /* SERVICES */
-  .services {
-    background: var(--pearl);
-    padding: 7rem 5rem;
+  .about-visual {
+    background: var(--roast);
+    min-height: 400px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
-  .services-inner {
-    max-width: 1100px;
-    margin: 0 auto;
+  .about-visual-inner {
+    text-align: center;
+    padding: 3rem;
   }
 
-  .services-header {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4rem;
-    margin-bottom: 4rem;
-    align-items: end;
-  }
-
-  .services-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1px;
-    background: rgba(13,27,42,0.08);
-  }
-
-  .service-card {
-    background: var(--pearl);
-    padding: 2.5rem;
-    transition: background 0.2s;
-  }
-
-  .service-card:hover { background: white; }
-
-  .service-num {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 2.5rem;
-    font-weight: 300;
-    color: rgba(184,154,90,0.25);
+  .big-quote {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 6rem;
+    color: rgba(193,127,58,0.15);
     line-height: 1;
-    margin-bottom: 1.2rem;
+    margin-bottom: 1rem;
   }
 
-  .service-name {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.25rem;
-    font-weight: 600;
-    color: var(--navy);
-    margin-bottom: 0.8rem;
-  }
-
-  .service-desc {
-    font-size: 0.85rem;
-    line-height: 1.75;
-    color: var(--muted);
-    font-weight: 300;
+  .quote-text {
+    font-family: 'Lora', serif;
+    font-style: italic;
+    font-size: 1.2rem;
+    color: var(--cream);
+    line-height: 1.7;
   }
 
   /* FOOTER */
   footer {
-    background: var(--navy);
-    padding: 3.5rem 5rem;
+    background: var(--roast);
+    padding: 3rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
   }
 
-  .footer-brand {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.3rem;
-    font-weight: 300;
-    color: var(--pearl);
-    letter-spacing: 0.06em;
+  .footer-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.8rem;
+    color: var(--cream);
+    letter-spacing: 0.1em;
   }
 
-  .footer-sub {
-    font-size: 0.68rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--gold);
-    margin-top: 0.4rem;
+  .footer-tagline {
+    font-family: 'Lora', serif;
+    font-style: italic;
+    font-size: 0.9rem;
+    color: rgba(245,237,224,0.55);
+    margin-top: 0.3rem;
   }
 
-  .footer-right {
+  .footer-info {
     text-align: right;
-    font-size: 0.78rem;
-    color: rgba(244,241,235,0.4);
-    line-height: 1.9;
-    font-weight: 300;
+    font-size: 0.8rem;
+    color: rgba(245,237,224,0.5);
+    line-height: 1.8;
   }
 
+  /* ANIMATIONS */
   @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(24px); }
+    from { opacity: 0; transform: translateY(20px); }
     to { opacity: 1; transform: translateY(0); }
   }
 </style>
@@ -501,119 +444,120 @@
 <body>
 
 <nav>
-  <div class="nav-brand">
-    <div class="nav-name">Meridian Wealth Advisors</div>
-    <div class="nav-tagline">Life Advisors. Financial Partners.</div>
-  </div>
+  <div class="nav-logo">Steady Ground</div>
   <ul class="nav-links">
-    <li><a href="#">Services</a></li>
-    <li><a href="#">Our Approach</a></li>
-    <li><a href="#">Team</a></li>
-    <li><a href="#" class="nav-cta">Get Started</a></li>
+    <li><a href="#">Menu</a></li>
+    <li><a href="#">About</a></li>
+    <li><a href="#">Find Us</a></li>
+    <li><a href="#">Order</a></li>
   </ul>
 </nav>
 
 <section class="hero">
   <div class="hero-left">
-    <div class="hero-eyebrow">
-      <div class="eyebrow-line"></div>
-      <span class="eyebrow-text">Seattle-Based Financial Planning</span>
-    </div>
+    <div class="hero-eyebrow">Seattle, WA — Est. 2018</div>
     <h1 class="hero-headline">
-      We're your advisors.<br>
-      <em>Your life advisors.</em>
+      No bull,<br>
+      <span>just buzz.</span>
     </h1>
-    <p class="hero-body">Money is tied to everything — your retirement, your kids' futures, the business you're building, the life you're planning. We listen first, then build a plan around what actually matters to you.</p>
-    <div class="hero-actions">
-      <a href="#" class="btn-primary">Schedule a Conversation</a>
-      <a href="#" class="btn-ghost">Our Approach →</a>
-    </div>
+    <p class="hero-sub">You can get coffee anywhere. But why go corporate when Steady Ground has you covered? Our baristas are local, our banter is free, and we don't need to write on your cup to make you feel seen.</p>
+    <a href="#" class="hero-cta">Pull Up a Chair</a>
   </div>
   <div class="hero-right">
-    <div class="hero-card">
-      <div class="card-label">What We Handle</div>
-      <ul class="card-services">
-        <li>Retirement Planning <span>→</span></li>
-        <li>Estate & Trust Services <span>→</span></li>
-        <li>College Savings <span>→</span></li>
-        <li>Investment Management <span>→</span></li>
-        <li>Tax Strategy <span>→</span></li>
-      </ul>
+    <div class="hero-right-inner">
+      <div class="coffee-icon">☕</div>
+      <p class="hero-tagline">"Pull up a chair,<br>grab a bite, and stay awhile."</p>
+      <div class="hours-badge">
+        <div class="label">Open Daily</div>
+        <div class="time">6AM — 8PM</div>
+      </div>
     </div>
   </div>
 </section>
 
-<div class="trust-bar">
-  <span class="trust-item">Seattle-Based</span>
-  <span class="trust-sep"></span>
-  <span class="trust-item">Fee-Only</span>
-  <span class="trust-sep"></span>
-  <span class="trust-item">Fiduciary</span>
-  <span class="trust-sep"></span>
-  <span class="trust-item">No Jargon. No Pressure.</span>
+<div class="about-strip">
+  <span class="strip-item">Locally Owned</span>
+  <span class="strip-dot"></span>
+  <span class="strip-item">Seattle Roasted</span>
+  <span class="strip-dot"></span>
+  <span class="strip-item">No Corporate Nonsense</span>
+  <span class="strip-dot"></span>
+  <span class="strip-item">Est. 2018</span>
+  <span class="strip-dot"></span>
+  <span class="strip-item">Capitol Hill</span>
 </div>
 
-<section class="about">
-  <div class="about-text">
-    <div class="section-eyebrow">
-      <div class="eyebrow-line-dark"></div>
-      <span class="eyebrow-label">About Us</span>
+<section class="menu">
+  <div class="section-label">What We're Pouring</div>
+  <h2 class="section-title">The Menu</h2>
+  <div class="menu-grid">
+    <div class="menu-card">
+      <div class="menu-card-label">Espresso</div>
+      <div class="menu-card-name">The Standard</div>
+      <div class="menu-card-desc">Double shot, no drama. The way it should be.</div>
+      <div class="menu-card-price">$3.50</div>
     </div>
-    <h2 class="section-title">Built on<br><em>straight talk.</em></h2>
-    <p>We're Meridian Wealth Advisors. But our clients usually just call us their <strong>life advisors.</strong></p>
-    <p>Our team is Seattle-based, locally minded, and genuinely invested in this community. We've helped clients save for college, navigate retirement, establish trusts, and make confident decisions at every stage of life.</p>
-    <p>No jargon. No pressure. Just straightforward guidance from advisors who treat your future like it's their own, because in a lot of ways, it is.</p>
-  </div>
-  <div class="about-visual">
-    <p class="about-quote">"We don't just manage portfolios. We listen first, then build a plan around what actually matters to you."</p>
-    <div class="about-stats">
-      <div>
-        <div class="stat-number">20+</div>
-        <div class="stat-label">Years in Seattle</div>
-      </div>
-      <div>
-        <div class="stat-number">$0</div>
-        <div class="stat-label">Hidden fees. Ever.</div>
-      </div>
-      <div>
-        <div class="stat-number">300+</div>
-        <div class="stat-label">Families served</div>
-      </div>
-      <div>
-        <div class="stat-number">100%</div>
-        <div class="stat-label">Fiduciary standard</div>
-      </div>
+    <div class="menu-card">
+      <div class="menu-card-label">Drip</div>
+      <div class="menu-card-name">House Blend</div>
+      <div class="menu-card-desc">Dark, smooth, Seattle-roasted. Refills on us.</div>
+      <div class="menu-card-price">$2.75</div>
+    </div>
+    <div class="menu-card">
+      <div class="menu-card-label">Specialty</div>
+      <div class="menu-card-name">Fog Latte</div>
+      <div class="menu-card-desc">Oat milk, honey, a little cardamom. Very Pacific Northwest.</div>
+      <div class="menu-card-price">$5.50</div>
+    </div>
+    <div class="menu-card">
+      <div class="menu-card-label">Cold</div>
+      <div class="menu-card-name">Cold Brew</div>
+      <div class="menu-card-desc">Steeped 24 hours. Worth the wait.</div>
+      <div class="menu-card-price">$4.75</div>
+    </div>
+    <div class="menu-card">
+      <div class="menu-card-label">Bites</div>
+      <div class="menu-card-name">Bakery Daily</div>
+      <div class="menu-card-desc">Local bakery. Changes daily. Always gone by noon.</div>
+      <div class="menu-card-price">$3 — $6</div>
+    </div>
+    <div class="menu-card">
+      <div class="menu-card-label">Tea</div>
+      <div class="menu-card-name">Chai Latte</div>
+      <div class="menu-card-desc">House-made concentrate. Spiced just right.</div>
+      <div class="menu-card-price">$4.50</div>
     </div>
   </div>
 </section>
 
-<section class="services">
-  <div class="services-inner">
-    <div class="services-header">
-      <div>
-        <div class="section-eyebrow">
-          <div class="eyebrow-line-dark"></div>
-          <span class="eyebrow-label">What We Do</span>
-        </div>
-        <h2 class="section-title">Planning for<br><em>every stage.</em></h2>
-      </div>
-      <p style="font-size:0.92rem;line-height:1.85;color:var(--muted);font-weight:300;padding-bottom:0.5rem;">Whether you're just starting to think seriously about retirement or navigating a major life transition, we build plans that grow with you.</p>
+<section class="about">
+  <div class="about-visual">
+    <div class="about-visual-inner">
+      <div class="big-quote">"</div>
+      <p class="quote-text">We don't need to write on your cup<br>to make you feel seen.</p>
     </div>
-    <div class="services-grid">
-      <div class="service-card">
-        <div class="service-num">01</div>
-        <div class="service-name">Retirement Planning</div>
-        <div class="service-desc">A realistic roadmap to the retirement you actually want, built around your timeline and your goals.</div>
+  </div>
+  <div class="about-text">
+    <div class="section-label">Who We Are</div>
+    <h2 class="section-title">Ground Rules</h2>
+    <p class="about-body">Steady Ground started because Seattle deserved a coffee shop that didn't take itself too seriously. No seasonal drops. No $8 drinks with twelve ingredients. Just good coffee, real people, and a place that feels like yours the second you walk in.</p>
+    <p class="about-body">Our baristas live here. Our beans are roasted here. And we're not going anywhere.</p>
+    <div class="about-stats">
+      <div class="stat">
+        <div class="stat-number">6+</div>
+        <div class="stat-label">Years in the neighborhood</div>
       </div>
-      <div class="service-card">
-        <div class="service-num">02</div>
-        <div class="service-name">College Savings</div>
-        <div class="service-desc">529 plans, investment accounts, and funding strategies that make the numbers work for your family.</div>
+      <div class="stat">
+        <div class="stat-number">1</div>
+        <div class="stat-label">Location. On purpose.</div>
       </div>
-      <div class="service-card">
-        <div class="service-num">03</div>
-        <div class="service-name">Estate & Trust</div>
-        <div class="service-desc">Clear, straightforward guidance on protecting your assets and passing them to who matters most.</div>
+      <div class="stat">
+        <div class="stat-number">100%</div>
+        <div class="stat-label">Seattle roasted</div>
+      </div>
+      <div class="stat">
+        <div class="stat-number">0</div>
+        <div class="stat-label">Corporate overlords</div>
       </div>
     </div>
   </div>
@@ -621,13 +565,13 @@
 
 <footer>
   <div>
-    <div class="footer-brand">Meridian Wealth Advisors</div>
-    <div class="footer-sub">Life Advisors. Financial Partners.</div>
+    <div class="footer-logo">Steady Ground Coffee</div>
+    <div class="footer-tagline">No bull, just buzz.</div>
   </div>
-  <div class="footer-right">
-    <div>800 Fifth Ave, Suite 2100, Seattle WA 98104</div>
-    <div>info@meridianwealth.com</div>
-    <div>206.555.0192</div>
+  <div class="footer-info">
+    <div>1422 Pike St, Seattle WA 98122</div>
+    <div>Mon–Sun: 6AM–8PM</div>
+    <div>hello@steadygroundcoffee.com</div>
   </div>
 </footer>
 
